@@ -14,20 +14,36 @@ namespace ConsoleApp2 {
     internal class Program {
         static void Main(string[] args)
         {
+            string exit;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("How many people are we making PB & J sandwiches for?");
+                int numOfPeople = int.Parse(Console.ReadLine());
+                int slices = numOfPeople * 2;
+                int tbspButter = numOfPeople * 2;
+                int tspJelly = numOfPeople * 4;
 
-            Console.WriteLine("How many people are we making PB & J sandwiches for?");
-            int numOfPeople = int.Parse(Console.ReadLine());
+                Console.WriteLine("\nYou need:\n");
+                Console.WriteLine($"\t{slices} slices of bread");
+                Console.WriteLine($"\t{tbspButter} tablespoons of peanut butter");
+                Console.WriteLine($"\t{tspJelly} teaspoons of jelly\n");
+                Console.WriteLine("\tWhich is...\n");
 
-            Console.WriteLine("You need:\n");
-            Console.WriteLine($"{numOfPeople * 2} slices of bread");
-            Console.WriteLine($"{numOfPeople * 2} tablespoons of peanut butter");
-            Console.WriteLine($"{numOfPeople * 4} teaspoons of jelly\n");
-            Console.WriteLine("Which is...");
-            Console.WriteLine($"{numOfPeople * 2} loaves of bread");
-            Console.WriteLine($"{numOfPeople * 2} jars of peanut butter");
-            Console.WriteLine($"{numOfPeople * 4} jars of jelly\n");
+                double loaves = (double)slices / 28;
+                double jarsButter = (double)tbspButter / 32;
+                double jarsJelly = (double)tspJelly / 48;
+
+                Console.WriteLine($"\t{Math.Ceiling(loaves)} loaves of bread");
+                Console.WriteLine($"\t{Math.Ceiling(jarsButter)} jars of peanut butter");
+                Console.WriteLine($"\t{Math.Ceiling(jarsJelly)} jars of jelly\n");
+
+                Console.WriteLine("Would you like to restart? Enter yes or y to continue, or enter any other key to exit.");
+                exit = Console.ReadLine().ToLower();
+            } while(exit == "yes" || exit == "y");
 
 
+            Console.WriteLine("Goodbye!");
         }
     }
 }
